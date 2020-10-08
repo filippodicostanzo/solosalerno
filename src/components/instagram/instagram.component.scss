@@ -1,0 +1,19 @@
+.featured-media {
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+}
+p {
+  text-align: justify;
+}
+
+.time {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  line-height: 0px;
+  background: darkred;
+  padding: 0 10px;
+  border-radius: 0 40px 40px 0;
+  color: white;
+}

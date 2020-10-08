@@ -1,6 +1,8 @@
 {
   "name": "SoloSalerno",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "e92e49c0"
 }

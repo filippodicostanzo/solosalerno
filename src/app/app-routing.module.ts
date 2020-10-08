@@ -4,13 +4,21 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+    loadChildren: () =>
+        import('../pages/tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
+  {
+    path: 'post/:item_id',
+    loadChildren: () =>
+        import('../pages/post/post.module').then((m) => m.PostPageModule),
+  },
 ];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
+// @ts-ignore
 export class AppRoutingModule {}

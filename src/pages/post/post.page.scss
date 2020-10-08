@@ -1,0 +1,33 @@
+.text-container {
+  text-align: justify;
+  line-height: 20px;
+}
+
+img {
+  width: 100%;
+}
+
+.post-categories {
+  font-size: 14px;
+  text-align: center;
+  color: grey;
+  ion-icon {
+    margin-right: 5px;
+  }
+  .categories {
+    display: inline-block;
+  }
+}
+
+.post-author-date {
+  font-size: 14px;
+  text-align: center;
+  color: grey;
+}
+
+.social-icon {
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: x-large;
+  }
+}

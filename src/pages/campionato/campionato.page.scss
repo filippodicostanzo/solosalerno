@@ -1,0 +1,100 @@
+
+.next {
+  .header {
+    font-weight: 900;
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 10px 0;
+  }
+  .border-bottom-white {
+    border-bottom: 1px solid white;
+  }
+
+  .odd {
+    background: #fcfcfc;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+  }
+
+  .even {
+    background:#f1f1f1;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+  }
+
+  .teams {
+    ion-col {
+      display: flex;
+      align-items: center;
+
+      &.ion-text-center {
+        justify-content: center;
+      }
+
+      &.home{
+        justify-content: flex-start;
+        padding-left: 10px;
+        img {
+          margin-right: 10px;
+        }
+      }
+
+      &.away {
+        justify-content: flex-end;
+        padding-right: 10px;
+        img {
+          margin-left: 10px;
+        }
+      }
+
+      img {
+        max-width: 25px;
+
+      }
+    }
+  }
+}
+
+
+.ranking {
+  .header {
+    font-weight: 900;
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 10px 0;
+  }
+
+  .odd {
+    background: #fcfcfc;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+  }
+
+  .even {
+    background:#f1f1f1;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+  }
+
+  .teams {
+    ion-col {
+      display: flex;
+      align-items: center;
+
+      &.ion-text-center{
+        justify-content: center;
+      }
+
+      img {
+        max-width: 25px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+}
+
+.bold {
+  font-weight: 900;
+  color: var(--ion-color-primary);
+}

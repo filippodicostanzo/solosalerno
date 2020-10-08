@@ -1,0 +1,12 @@
+<ion-card (click)="clickEvent(item.link)">
+  <div class="featured-media"
+       [ngStyle]="{'background-image': 'url(' + item.imageHighResolutionUrl + ')'}"></div>
+  <div class="time">
+    <p>{{item.createdTime}}</p>
+  </div>
+
+  <ion-card-content>
+
+    <p [innerHTML]="item.caption | truncate : 500 : ' […] ' "></p>
+  </ion-card-content>
+</ion-card>

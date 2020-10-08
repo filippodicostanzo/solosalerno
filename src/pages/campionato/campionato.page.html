@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title> Campionato</ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Campionato</ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-segment scrollable (ionChange)="segmentChanged($event)" value="0">
+        <ion-segment-button value="0"> Ultimo Turno</ion-segment-button>
+
+        <ion-segment-button value="1"> Prossimo Turno</ion-segment-button>
+
+        <ion-segment-button value="2"> Classifica</ion-segment-button>
+
+    </ion-segment>
+
+    <ion-grid class="next ion-no-padding" *ngIf="active==0">
+        <ion-row class="header border-bottom-white">
+            <ion-col size="12" class="ion-text-center">{{previous}} GIORNATA</ion-col>
+        </ion-row>
+        <ion-row class="header">
+            <ion-col size="5" class="ion-text-center">CASA</ion-col>
+
+            <ion-col size="2" class="ion-text-center">VS</ion-col>
+
+            <ion-col size="5" class="ion-text-center">TRASFERTA</ion-col>
+
+        </ion-row>
+
+        <ion-row *ngFor="let item of previoustable; let index=index" [ngClass]="{'odd': index%2==0,
+    'even': index%2!=0,'bold': item.homeTeam.team_id=='514'||item.awayTeam.team_id=='514'}" class="teams">
+            <ion-col size="5" class="ion-text-center home"><img
+                    src="{{image}}{{item.homeTeam.team_id}}.png"> {{item.homeTeam.team_name}}</ion-col>
+            <ion-col size="2" class="ion-text-center">{{item.goalsHomeTeam}} - {{item.goalsAwayTeam}}</ion-col>
+
+            <ion-col size="5" class="ion-text-center away">{{item.awayTeam.team_name}} <img
+                    src="{{image}}{{item.awayTeam.team_id}}.png"></ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="next ion-no-padding" *ngIf="active==1">
+        <ion-row class="header border-bottom-white">
+            <ion-col size="12" class="ion-text-center">{{previous + 1}} GIORNATA</ion-col>
+        </ion-row>
+        <ion-row class="header">
+            <ion-col size="5" class="ion-text-center">CASA</ion-col>
+
+            <ion-col size="2" class="ion-text-center">VS</ion-col>
+
+            <ion-col size="5" class="ion-text-center">TRASFERTA</ion-col>
+
+        </ion-row>
+
+        <ion-row *ngFor="let item of nexttable; let index=index" [ngClass]="{'odd': index%2==0,
+    'even': index%2!=0, 'bold': item.homeTeam.team_id=='514'||item.awayTeam.team_id=='514'}" class="teams">
+            <ion-col size="5" class="home"><img src="{{image}}{{item.homeTeam.team_id}}.png"> {{item.homeTeam.team_name}}</ion-col>
+
+            <ion-col size="2" class="ion-text-center">{{item.event_date | matchdate}}</ion-col>
+
+            <ion-col size="5" class="ion-text-center away">{{item.awayTeam.team_name}} <img src="{{image}}{{item.awayTeam.team_id}}.png"></ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="ranking ion-no-padding" *ngIf="active == 2">
+        <ion-row class="header">
+            <ion-col size="1" class="ion-text-center">#</ion-col>
+
+            <ion-col size="5">TEAM</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">PG</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">GF</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">GS</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">PT</ion-col>
+
+        </ion-row>
+
+        <ion-row *ngFor="let item of state.leaguetable.api.standings[0] let index=index" class="teams"
+                 [ngClass]="{'odd': index%2==0, 'even': index%2!=0, 'bold': item.team_id=='514'}">
+            <ion-col size="1" class="ion-text-center">{{item.rank}}</ion-col>
+
+            <ion-col size="5"><img src="{{image}}{{item.team_id}}.png"> {{item.teamName}}</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">{{item.matchsPlayed}}</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">{{item.goalsFor}}</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">{{item.goalsAgainst}}</ion-col>
+
+            <ion-col size="1.5" class="ion-text-center">{{item.points}}</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

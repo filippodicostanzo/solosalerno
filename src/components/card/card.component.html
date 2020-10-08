@@ -1,0 +1,15 @@
+<ion-card (click)="clickEvent(item, posts)">
+  <div class="featured-media"
+    [ngStyle]="{'background-image': 'url(' + item._embedded['wp:featuredmedia'][0].source_url + ')'}"></div>
+  <ion-card-header>
+      <ion-card-subtitle *ngFor="let category of item._embedded['wp:term'][0]; last as isLast">
+        {{category.name}} <span *ngIf="!isLast"> -&nbsp;</span>
+      </ion-card-subtitle>
+
+    <ion-card-title  [innerHTML]="item.title.rendered"></ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="excerpt!=false">
+    <p [innerHTML]="item.excerpt.rendered | truncate : 500 : '…' "></p>
+  </ion-card-content>
+</ion-card>
