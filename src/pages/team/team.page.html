@@ -12,4 +12,36 @@
       <ion-title size="large">Team</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-text-uppercase"><h1>Portieri</h1></ion-col>
+      <ion-col *ngFor="let player of squad.goalkeepers" size="6">
+        <app-player [player]="player"></app-player>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-text-uppercase"><h1>Difensori</h1></ion-col>
+      <ion-col *ngFor="let player of squad.defenders" size="6">
+        <app-player [player]="player"></app-player>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-text-uppercase"><h1>Centrocampisti</h1></ion-col>
+      <ion-col *ngFor="let player of squad.midfielders" size="6">
+        <app-player [player]="player"></app-player>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-text-uppercase"><h1>Attaccanti</h1></ion-col>
+      <ion-col *ngFor="let player of squad.attackers" size="6">
+        <app-player [player]="player"></app-player>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>

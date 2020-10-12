@@ -66,6 +66,13 @@ export class PostPage implements OnInit {
         this.navCtrl.navigateRoot('/tabs/tab2', {animationDirection: 'back', state: {data: category}});
     }
 
+    clickArchive(type, item) {
+        if (type === 'date') {
+            item = item.substr(0, 10);
+        }
+        this.navCtrl.navigateForward('/archive/' + type + '/' + item, {state: {type, item}});
+    }
+
     shareFB() {
         this.socialSharing
             .shareViaFacebook(this.item?.content.rendered, this.item._embedded['wp:featuredmedia'][0].source_url)

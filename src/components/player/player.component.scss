@@ -1,0 +1,73 @@
+ion-card {
+  margin: 5px;
+  color:var(--ion-color-light);
+}
+
+.goalkeeper {
+  background: rgb(91,20,25);
+  background: -moz-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(93,156,208,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(93,156,208,1) 100%);
+  background: linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(93,156,208,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b1419",endColorstr="#5d9cd0",GradientType=1);
+}
+
+.defender {
+  background: rgb(91,20,25);
+  background: -moz-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(147,146,97,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(147,146,97,1) 100%);
+  background: linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(147,146,97,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b1419",endColorstr="#939261",GradientType=1);
+}
+
+.midfielder {
+  background: rgb(91,20,25);
+  background: -moz-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,134,115,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,134,115,1) 100%);
+  background: linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,134,115,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b1419",endColorstr="#d08673",GradientType=1);
+}
+
+.attacker {
+  background: rgb(91,20,25);
+  background: -moz-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,115,196,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,115,196,1) 100%);
+  background: linear-gradient(180deg, rgba(91,20,25,1) 0%, rgba(208,115,196,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5b1419",endColorstr="#d073c4",GradientType=1);
+}
+
+img {
+  border-radius: 50%;
+}
+
+.player-number {
+  font-size: 30px;
+  text-align: center;
+  font-style: italic;
+}
+
+.player-firstname {
+  font-weight: lighter;
+  padding-top:0 ;
+  padding-bottom: 0;
+  p{
+    margin-bottom: 0;
+  }
+}
+
+.player-lastname {
+  text-transform: uppercase;
+  font-weight: bolder;
+  padding-top:0 ;
+  padding-bottom: 0;
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.ion-align-items-center {
+  display: flex;
+  justify-content: center;
+  ion-icon {
+    margin-right: 5px;
+  }
+}

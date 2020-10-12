@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="backToHome()" color="light">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Archivio - {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="light">Archivio - {{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-virtual-scroll [items]="currentPosts" approxItemHeight="320px">
+    <ion-item *virtualItem="let item; let itemBounds = bounds;">
+      <app-card [post]="item" [posts]="data.posts"></app-card>
+    </ion-item>
+  </ion-virtual-scroll>
+
+</ion-content>

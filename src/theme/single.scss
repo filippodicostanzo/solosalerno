@@ -64,6 +64,9 @@ ion-tab-bar {
   color: var(--ion-color-secondary);
 }
 
+/*
+ * LOADING WRAPPER
+ */
 
 .loading-wrapper {
   --background: var(--ion-color-primary);
@@ -75,6 +78,10 @@ ion-spinner {
 }
 
 
+/*
+ * ION SEGMENT
+ */
+
 ion-segment {
   background: var(--ion-color-primary);
   border-radius: 0;
@@ -83,4 +90,12 @@ ion-segment {
 ion-segment-button {
   --color-checked: var(--ion-color-dark);
   --color: var(--ion-color-light);
+}
+
+/*
+ * ION CONTENT
+ */
+
+ion-content {
+  --padding-bottom: 50px;
 }

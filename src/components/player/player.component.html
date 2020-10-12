@@ -1,0 +1,33 @@
+<ion-card [ngClass]="item.position.toLowerCase()" class="ion-margin-bottom">
+    <ion-row class="ion-align-items-center">
+        <ion-col size="8"><img src="{{image}}{{item.player_id}}.jpg"></ion-col>
+        <ion-col size="4"><h4 class="player-number">{{item.number}}</h4></ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col size="12" class="ion-text-center player-firstname"><p>{{item.firstname}}</p></ion-col>
+        <ion-col size="12" class="ion-text-center player-lastname"><h4>{{item.lastname}}</h4></ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col class="ion-text-center ion-align-items-center">
+            <ion-icon name="unlink-outline"></ion-icon>
+            {{item.age}}</ion-col>
+        <ion-col class="ion-text-center ion-align-items-center">
+            <ion-icon name="earth-outline"></ion-icon>
+
+                {{item.nationality | country}}
+
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col class="ion-text-center ion-align-items-center">
+            <ion-icon name="ellipsis-vertical-circle-outline"></ion-icon>
+            <span *ngIf="!item.height">N/A</span> {{item.height}}</ion-col>
+        <ion-col class="ion-text-center ion-align-items-center">
+            <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+            <span *ngIf="!item.weight">N/A</span> {{item.weight}}</ion-col>
+    </ion-row>
+
+</ion-card>

@@ -6,8 +6,12 @@ import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome
 
 import {CardComponent} from '../components/card/card.component';
 import {InstagramComponent} from '../components/instagram/instagram.component';
+import {PlayerComponent} from '../components/player/player.component';
+
 import {InstagramdatePipe} from '../pipes/instagramdate/instagramdate.pipe';
 import {MatchdatePipe} from '../pipes/matchdate/matchdate.pipe';
+import {CountryPipe} from '../pipes/country/country.pipe';
+
 import {TruncateModule} from '@yellowspot/ng-truncate';
 
 import {fas} from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +19,7 @@ import {far} from '@fortawesome/free-regular-svg-icons';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
-    declarations: [InstagramdatePipe, MatchdatePipe, CardComponent, InstagramComponent],
+    declarations: [InstagramdatePipe, MatchdatePipe, CardComponent, CountryPipe, InstagramComponent, PlayerComponent],
     imports: [
         CommonModule,
         RouterModule,
@@ -28,8 +32,10 @@ import {fab} from '@fortawesome/free-brands-svg-icons';
         TruncateModule,
         InstagramdatePipe,
         MatchdatePipe,
+        CountryPipe,
         CardComponent,
         InstagramComponent,
+        PlayerComponent
     ],
 })
 export class SharedModule {
