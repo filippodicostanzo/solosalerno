@@ -6,6 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,11 +14,19 @@
     </ion-toolbar>
   </ion-header>
 
-
   <ion-virtual-scroll [items]="posts" approxItemHeight="320px">
     <ion-item *virtualItem="let item; let itemBounds = bounds;">
       <app-card [post]="item" [posts]="allposts"></app-card>
     </ion-item>
   </ion-virtual-scroll>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="chevron-down-circle-outline"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Aggiornamento...">
+    </ion-refresher-content>
+  </ion-refresher>
 
 </ion-content>

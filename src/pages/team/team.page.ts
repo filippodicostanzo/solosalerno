@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SquadService} from '../../services/squad/squad.service';
 import {Platform} from '@ionic/angular';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-team',
@@ -33,14 +34,22 @@ export class TeamPage implements OnInit {
 
     }
 
-    createSquad()
-    {
+    createSquad() {
 
         const a = this.data.playersnumber.api.players;
-        const b = this.data.playerscomplete.api.players;
+        let b = this.data.playerscomplete.api.players;
 
         console.log(a);
         console.log(b);
+
+        b = _.uniqBy(b, 'number');
+
+        this.mergeArray(a, b);
+
+
+    }
+
+    mergeArray(a, b) {
 
 
         for (let i = 0, len = a.length; i < len; i++) {
@@ -63,5 +72,6 @@ export class TeamPage implements OnInit {
         }
         console.log(this.squad);
     }
+
 
 }

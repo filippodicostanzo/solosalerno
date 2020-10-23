@@ -75,7 +75,7 @@ export class PostPage implements OnInit {
 
     shareFB() {
         this.socialSharing
-            .shareViaFacebook(this.item?.content.rendered, this.item._embedded['wp:featuredmedia'][0].source_url)
+            .shareViaFacebook(this.item.title.rendered, this.item._embedded['wp:featuredmedia'][0].source_url, this.item.link)
             .then(() => {
                 // Success!
             })
@@ -99,7 +99,7 @@ export class PostPage implements OnInit {
 
     shareIN() {
         this.socialSharing
-            .shareViaInstagram(this.item?.content.rendered, this.item._embedded['wp:featuredmedia'][0].source_url)
+            .shareViaInstagram(this.item?.link, this.item._embedded['wp:featuredmedia'][0].source_url)
             .then(() => {
                 // Success!
             })
@@ -123,7 +123,7 @@ export class PostPage implements OnInit {
 
     shareWA() {
         this.socialSharing
-            .shareViaWhatsApp(this.item?.content.rendered, this.item._embedded['wp:featuredmedia'][0].source_url)
+            .shareViaWhatsApp(this.item.title.rendered, this.item._embedded['wp:featuredmedia'][0].source_url, this.item.link)
             .then(() => {
                 // Success!
             })
@@ -147,7 +147,7 @@ export class PostPage implements OnInit {
 
     shareTW() {
         this.socialSharing
-            .shareViaTwitter(this.item?.content.rendered, this.item._embedded['wp:featuredmedia'][0].source_url)
+            .shareViaTwitter(this.item.title.rendered, this.item._embedded['wp:featuredmedia'][0].source_url, this.item.link)
             .then(() => {
                 // Success!
             })

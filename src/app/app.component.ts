@@ -23,6 +23,9 @@ export class AppComponent {
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
+            this.statusBar.overlaysWebView(false);
+            this.statusBar.backgroundColorByHexString('#5b1419');
+            this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.oneSignalOldSDK();
         });
@@ -31,8 +34,8 @@ export class AppComponent {
 
     oneSignalOldSDK() {
         this.oneSignal.startInit(
-            '0d5289bd-f156-4cce-aa5d-650e9faddbe9',
-            '907526367627'
+            '9701567b-b444-4b46-9be1-352a26fe8440',
+            '1022698472550'
         );
 
         this.oneSignal.inFocusDisplaying(
@@ -45,6 +48,7 @@ export class AppComponent {
 
         this.oneSignal.handleNotificationOpened().subscribe(() => {
             // do something when a notification is opened
+            console.log('Notify');
         });
 
         this.oneSignal.endInit();

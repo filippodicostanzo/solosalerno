@@ -22,7 +22,7 @@
   </ion-header>
 
   <ion-virtual-scroll [items]="currentPosts" approxItemHeight="320px">
-    <ion-item *virtualItem="let item; let itemBounds = bounds;">
+    <ion-item *virtualItem="let item; let itemBounds = bounds;" lines="none">
       <app-card [post]="item" [posts]="data.posts"></app-card>
     </ion-item>
   </ion-virtual-scroll>

@@ -23,8 +23,7 @@
     <img [src]="item._embedded['wp:featuredmedia'][0].source_url">
     <ion-row class="ion-padding"><h2 [innerHTML]="item.title.rendered"></h2></ion-row>
 
-    <ion-row class="ion-padding-start ion-padding-end post-author-date
-    ">
+    <ion-row class="ion-padding-start ion-padding-end post-author-date">
         <ion-col size="6" (click)="clickArchive('author', item.author)">
             <ion-icon icon="person"></ion-icon>
             {{item._embedded['author'][0].name}} </ion-col>
@@ -85,4 +84,4 @@
 
     </ion-row>
 
-</ion-content>"
+</ion-content>

@@ -92,6 +92,12 @@ ion-segment-button {
   --color: var(--ion-color-light);
 }
 
+.md {
+  ion-segment-button{
+    --color-checked: var(--ion-color-secondary);
+  }
+}
+
 /*
  * ION CONTENT
  */

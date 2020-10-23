@@ -30,6 +30,23 @@ export class PrimopianoPage implements OnInit {
         });
     }
 
+    doRefresh(event) {
+
+
+        this.getDataService.getHighlitesForce().then((data) => {
+            // @ts-ignore
+            this.posts = data.highlites.slice(0, 20);
+            event.target.complete();
+        });
+
+        this.getDataService.getDataForce().then((data) => {
+            // @ts-ignore
+            this.allposts = data.posts;
+        });
+
+
+    }
+
 }
 
 

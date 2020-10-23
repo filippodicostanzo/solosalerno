@@ -98,6 +98,27 @@ export class DataService {
         }
     }
 
+    getHighlitesForce() {
+        return new Promise((resolve) => {
+            this.loadingService.presentLoading('loadInstagram').then(() => {
+                axios.get('https://www.solosalerno.it/wp-json/wp/v2/posts?_embed').then((res) => {
+                    this.state.highlites = res.data;
+                    resolve(this.state);
+                    this.loadingService.dismissLoading('loadInstagram');
+                }).catch((error) => {
+                    this.loadingService.dismissLoading('loadPosts');
+                    this.alertService.presentAlert(
+                        'Errore',
+                        '',
+                        'Si è verificato un errore durante il recupero dei dati',
+                        ['OK']
+                    );
+                    console.log(error);
+                });
+            });
+        });
+    }
+
 
     getData(loading) {
 
@@ -155,6 +176,8 @@ export class DataService {
         }
 
 
+
+
         // @ts-ignore
         this.state.posts = this.getNumPosts()
             .then(numPosts => this.fetchPosts(numPosts))
@@ -177,6 +200,30 @@ export class DataService {
                 });
               console.log(this.data);
               */
+    }
+
+
+    getDataForce() {
+        return new Promise((resolve) => {
+            this.getNumPosts()
+                .then(numPosts => this.fetchPosts(numPosts))
+                .then(() => this.getCategories())
+                .then((data) => {
+                    console.log('data ', this.state);
+                    resolve(this.state);
+                }).catch((error) => {
+                    this.alertService.presentAlert(
+                        'Errore',
+                        '',
+                        'Si è verificato un errore durante il recupero dei dati',
+                        ['OK']
+                    );
+                    console.log(error);
+                }
+            )
+            ;
+
+        });
     }
 }
 

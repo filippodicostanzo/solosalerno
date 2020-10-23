@@ -42,7 +42,7 @@ export class NewsPage implements OnInit {
         });
 
         this.platform.ready().then(() => {
-            this.getData.getData(true).then((data) => {
+            this.getData.getData( true).then((data) => {
                 // @ts-ignore
                 this.data = data;
                 this.active = this.data.categories[0].id;

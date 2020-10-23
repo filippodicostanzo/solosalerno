@@ -1,6 +1,6 @@
 <ion-card [ngClass]="item.position.toLowerCase()" class="ion-margin-bottom">
     <ion-row class="ion-align-items-center">
-        <ion-col size="8"><img src="{{image}}{{item.player_id}}.jpg"></ion-col>
+        <ion-col size="8"><img src="{{playerImage}}" (error)="setDefaultImage()"></ion-col>
         <ion-col size="4"><h4 class="player-number">{{item.number}}</h4></ion-col>
     </ion-row>
 
@@ -16,7 +16,7 @@
         <ion-col class="ion-text-center ion-align-items-center">
             <ion-icon name="earth-outline"></ion-icon>
 
-                {{item.nationality | country}}
+            {{item.nationality | country}}
 
         </ion-col>
     </ion-row>
