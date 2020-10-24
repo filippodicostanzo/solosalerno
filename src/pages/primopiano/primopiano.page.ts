@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {Post} from '../../interfaces/post';
 import {DataService} from '../../services/data/data.service';
+import {EventsService} from '../../services/events/events.service';
 
 @Component({
     selector: 'app-primopiano',
@@ -13,7 +14,7 @@ export class PrimopianoPage implements OnInit {
     posts: Array<Post>;
     allposts: Array<Post>;
 
-    constructor(public platform: Platform, public getDataService: DataService) {
+    constructor(public platform: Platform, public getDataService: DataService, private eventsService: EventsService) {
     }
 
     ngOnInit() {
@@ -45,6 +46,21 @@ export class PrimopianoPage implements OnInit {
         });
 
 
+    }
+
+
+    ionViewWillEnter() {
+        const subscription = this.eventsService.subscribe('refresh-data', () => {
+            this.getDataService.getHighlitesForce().then((data) => {
+                // @ts-ignore
+                this.posts = data.highlites.slice(0, 20);
+            });
+
+            this.getDataService.getDataForce().then((data) => {
+                // @ts-ignore
+                this.allposts = data.posts;
+            });
+        });
     }
 
 }

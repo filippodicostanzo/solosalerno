@@ -105,3 +105,8 @@ ion-segment-button {
 ion-content {
   --padding-bottom: 50px;
 }
+
+
+.md body {
+  ion-title: var(--ion-color-light);
+}
