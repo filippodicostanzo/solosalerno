@@ -25,20 +25,31 @@
 
     <ion-row class="ion-padding-start ion-padding-end post-author-date">
         <ion-col size="6" (click)="clickArchive('author', item.author)">
-            <ion-icon icon="person"></ion-icon>
-            {{item._embedded['author'][0].name}} </ion-col>
+            <div>
+                <ion-icon icon="person"></ion-icon>
+                {{item._embedded['author'][0].name}}
+            </div>
+        </ion-col>
+
 
         <ion-col size="6" (click)="clickArchive('date', item.date)">
-            <ion-icon icon="calendar"></ion-icon>
-            {{item.date | date:'dd/MM/yyyy'}}</ion-col>
+            <div>
+                <ion-icon icon="calendar"></ion-icon>
+                {{item.date | date:'dd/MM/yyyy'}}
+            </div>
+        </ion-col>
+
     </ion-row>
     <ion-row class="ion-padding-start ion-padding-end post-categories
     ">
         <ion-col size="12" class="ion-text-center">
-            <ion-icon name="pricetags"></ion-icon>
+            <div>
+                <ion-icon name="pricetags"></ion-icon>
 
-            <div *ngFor="let category of item._embedded['wp:term'][0]; last as isLast" class="categories">
-                <a (click)="clickArchive('category', category.id)"> {{category.name}} </a><span *ngIf="!isLast"> -&nbsp;</span>
+                <div *ngFor="let category of item._embedded['wp:term'][0]; last as isLast" class="categories">
+                    <a (click)="clickArchive('category', category.id)"> {{category.name}} </a><span
+                        *ngIf="!isLast"> -&nbsp;</span>
+                </div>
             </div>
         </ion-col>
     </ion-row>

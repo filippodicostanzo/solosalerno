@@ -11,11 +11,18 @@ img {
   font-size: 14px;
   text-align: center;
   color: grey;
-  ion-icon {
-    margin-right: 5px;
-  }
-  .categories {
-    display: inline-block;
+  ion-col > div {
+    border-radius: 50px;
+    box-shadow: 0 0 8px 0 #0000001f;
+    padding: 10px;
+
+    ion-icon {
+      margin-right: 5px;
+    }
+
+    .categories {
+      display: inline-block;
+    }
   }
 }
 
@@ -23,6 +30,14 @@ img {
   font-size: 14px;
   text-align: center;
   color: grey;
+  border-radius: 50px;
+  ion-col {
+    div {
+      border-radius: 50px;
+      box-shadow: 0 0 8px 0 #0000001f;
+      padding: 10px;
+    }
+  }
 }
 
 .social-icon {
