@@ -51,6 +51,7 @@ export class PrimopianoPage implements OnInit {
 
     ionViewWillEnter() {
         const subscription = this.eventsService.subscribe('refresh-data', () => {
+            console.log('Listen Event');
             this.getDataService.getHighlitesForce().then((data) => {
                 // @ts-ignore
                 this.posts = data.highlites.slice(0, 20);
@@ -60,6 +61,8 @@ export class PrimopianoPage implements OnInit {
                 // @ts-ignore
                 this.allposts = data.posts;
             });
+
+            this.eventsService.destroy('refresh-data');
         });
     }
 
