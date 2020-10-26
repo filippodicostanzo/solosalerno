@@ -1,7 +1,6 @@
 .main-tab {
   background: var(--ion-color-tertiary);
   position: absolute;
-  bottom: 10px;
   width: 60px;
   height: 60px;
   border-radius: 50px;
@@ -14,4 +13,13 @@
 
 .tab-selected {
   color:var(--ion-color-secondary);
+}
+
+
+.main-tab.ios {
+  bottom: 30px
+}
+
+.main-tab.md{
+  bottom: 10px;
 }

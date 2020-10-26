@@ -3,6 +3,7 @@ import {Platform} from '@ionic/angular';
 import {Post} from '../../interfaces/post';
 import {DataService} from '../../services/data/data.service';
 import {EventsService} from '../../services/events/events.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-primopiano',
@@ -13,6 +14,7 @@ export class PrimopianoPage implements OnInit {
 
     posts: Array<Post>;
     allposts: Array<Post>;
+    subscription: Subscription;
 
     constructor(public platform: Platform, public getDataService: DataService, private eventsService: EventsService) {
     }
@@ -49,21 +51,32 @@ export class PrimopianoPage implements OnInit {
     }
 
 
-    ionViewWillEnter() {
-        const subscription = this.eventsService.subscribe('refresh-data', () => {
-            console.log('Listen Event');
-            this.getDataService.getHighlitesForce().then((data) => {
-                // @ts-ignore
-                this.posts = data.highlites.slice(0, 20);
-            });
+    ionViewDidEnter() {
 
-            this.getDataService.getDataForce().then((data) => {
-                // @ts-ignore
-                this.allposts = data.posts;
-            });
+        setTimeout(() => {
 
-            this.eventsService.destroy('refresh-data');
-        });
+            const subscription = this.eventsService.subscribe('refresh-data', (item) => {
+                console.log('LOOOOOADING EVENT');
+                console.log('Listen Event');
+                this.getDataService.getHighlitesForce().then((data) => {
+                    // @ts-ignore
+                    this.posts = data.highlites.slice(0, 20);
+                });
+
+                this.getDataService.getDataForce().then((data) => {
+                    // @ts-ignore
+                    this.allposts = data.posts;
+                });
+                //subscription.unsubscribe();
+
+            });
+        }, 1000);
+
+    }
+
+    ionViewWillLeave() {
+        console.log('uscito');
+        this.eventsService.destroy('refresh-data');
     }
 
 }

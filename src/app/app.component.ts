@@ -4,7 +4,7 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
-import {EventsService} from "../services/events/events.service";
+import {EventsService} from '../services/events/events.service';
 
 @Component({
     selector: 'app-root',
@@ -12,12 +12,13 @@ import {EventsService} from "../services/events/events.service";
     styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private oneSignal: OneSignal,
-        public eventsService: EventsService
+        public eventsService: EventsService,
     ) {
         this.initializeApp();
     }
@@ -30,7 +31,6 @@ export class AppComponent {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.oneSignalOldSDK();
-
         });
     }
 
@@ -51,11 +51,14 @@ export class AppComponent {
 
         this.oneSignal.handleNotificationOpened().subscribe(() => {
             // do something when a notification is opened
-            this.platform.resume.subscribe((result) => {
-                console.log('Platform Resume Event');
-                this.eventsService.publish('refresh-data');
-            });
+            // this.platform.resume.subscribe((result) => {
+            // this.eventsService.publish('refresh-data');
+            // });
+
+            this.eventsService.publish('refresh-data');
+
         });
+
 
         this.oneSignal.endInit();
     }

@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 
 /**
  * A custom Events service just like Ionic 3 Events https://ionicframework.com/docs/v3/api/util/Events/ which got removed in Ionic 5.
  *
- *
+ * @author Shashank Agrawal
  */
-
 @Injectable({
   providedIn: 'root'
 })
-
 export class EventsService {
 
   private channels: { [key: string]: Subject<any>; } = {};
@@ -23,6 +21,8 @@ export class EventsService {
    * @returns Subscription from which you can unsubscribe to release memory resources and to prevent memory leak.
    */
   subscribe(topic: string, observer: (_: any) => void): Subscription {
+
+    console.log(topic);
     if (!this.channels[topic]) {
       // You can also use ReplaySubject with one concequence
       this.channels[topic] = new Subject<any>();
@@ -37,7 +37,11 @@ export class EventsService {
    * @param data data in any format to pass on.
    */
   publish(topic: string, data?: any): void {
+
+    console.log(topic);
+
     const subject = this.channels[topic];
+    console.log(subject);
     if (!subject) {
       // Or you can create a new subject for future subscribers
       return;
