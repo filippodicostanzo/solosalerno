@@ -21,7 +21,7 @@ export class PlayerComponent implements OnInit {
     }
 
     setDefaultImage() {
-        this.playerImage = 'https://php.localidautore.it/soccer/images/team/31664.jpg';
+        this.playerImage = 'https://php.localidautore.it/soccer/images/team/placeholder.jpg';
     }
 
 }
