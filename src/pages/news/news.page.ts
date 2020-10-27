@@ -33,14 +33,9 @@ export class NewsPage implements OnInit {
     constructor(public platform: Platform, private route: ActivatedRoute, private router: Router, public getData: DataService) {
     }
 
-    async ngOnInit() {
-        await this.onEnter();
-        this.subscription = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd && event.url === '/tabs/tab2') {
-                this.onEnter();
-            }
-        });
+    ngOnInit() {
 
+/*
         this.platform.ready().then(() => {
             this.getData.getData( true).then((data) => {
                 // @ts-ignore
@@ -52,35 +47,20 @@ export class NewsPage implements OnInit {
 
 
         });
-
+*/
     }
 
-    scrollSegment(segment) {
-        console.log(segment);
-        document.getElementById('segment-' + segment).scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center'
+    ionViewWillEnter() {
+        this.getData.getData(true).then((data) => {
+            console.log(data);
+            // @ts-ignore
+            this.data = data;
+            this.active = this.data.categories[0].id;
+            console.log(this.data);
+            console.log(this.active);
+            this.getInitPost(this.active);
         });
     }
-
-    public async onEnter(): Promise<void> {
-        // do your on enter page stuff here
-        this.route.queryParams.subscribe((params) => {
-            if (this.router.getCurrentNavigation().extras.state) {
-                this.active = this.router.getCurrentNavigation().extras.state.data;
-                console.log(this.content);
-                setTimeout(() => {
-                    this.content.scrollToTop(1000);
-                }, 1000);
-                setTimeout(() => {
-                    this.scrollSegment(this.active);
-                }, 3000);
-
-            }
-        });
-    }
-
 
     getInitPost(id) {
         this.data.posts.map((item) => {

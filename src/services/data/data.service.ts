@@ -51,6 +51,8 @@ export class DataService {
 
         await axios.all(posts).then(axios.spread((...res) => {
 
+            this.state.posts = [];
+
             const postData = res.map(rest => {
                 // tslint:disable-next-line:prefer-for-of
                 for (let i = 0; i < rest.data.length; i++) {

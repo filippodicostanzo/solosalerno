@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {Post} from '../../interfaces/post';
 import {DataService} from '../../services/data/data.service';
@@ -16,7 +16,7 @@ export class PrimopianoPage implements OnInit {
     allposts: Array<Post>;
     subscription: Subscription;
 
-    constructor(public platform: Platform, public getDataService: DataService, private eventsService: EventsService) {
+    constructor(public platform: Platform, public getDataService: DataService, private eventsService: EventsService, private zone: NgZone) {
     }
 
     ngOnInit() {
@@ -37,6 +37,7 @@ export class PrimopianoPage implements OnInit {
 
 
         this.getDataService.getHighlitesForce().then((data) => {
+            this.posts = [];
             // @ts-ignore
             this.posts = data.highlites.slice(0, 20);
             event.target.complete();
@@ -58,15 +59,19 @@ export class PrimopianoPage implements OnInit {
             const subscription = this.eventsService.subscribe('refresh-data', (item) => {
                 console.log('LOOOOOADING EVENT');
                 console.log('Listen Event');
-                this.getDataService.getHighlitesForce().then((data) => {
-                    // @ts-ignore
-                    this.posts = data.highlites.slice(0, 20);
+                this.zone.run(() => {
+                    this.getDataService.getHighlitesForce().then((data) => {
+                        this.posts = [];
+                        // @ts-ignore
+                        this.posts = data.highlites.slice(0, 20);
+                    });
+
+                    this.getDataService.getDataForce().then((data) => {
+                        // @ts-ignore
+                        this.allposts = data.posts;
+                    });
                 });
 
-                this.getDataService.getDataForce().then((data) => {
-                    // @ts-ignore
-                    this.allposts = data.posts;
-                });
                 //subscription.unsubscribe();
 
             });
