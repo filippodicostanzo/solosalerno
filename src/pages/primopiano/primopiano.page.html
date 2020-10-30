@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large" color="light">Primo Piano</ion-title>
@@ -15,7 +15,7 @@
   </ion-header>
 
   <ion-virtual-scroll [items]="posts" approxItemHeight="320px">
-    <ion-item *virtualItem="let item; let itemBounds = bounds;">
+    <ion-item detail-none *virtualItem="let item; let itemBounds = bounds;">
       <app-card [post]="item" [posts]="allposts"></app-card>
     </ion-item>
   </ion-virtual-scroll>

@@ -1,16 +1,21 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {Post} from '../../interfaces/post';
 import {DataService} from '../../services/data/data.service';
 import {EventsService} from '../../services/events/events.service';
 import {Subscription} from 'rxjs';
 
+
 @Component({
     selector: 'app-primopiano',
     templateUrl: './primopiano.page.html',
     styleUrls: ['./primopiano.page.scss'],
 })
+
+
 export class PrimopianoPage implements OnInit {
+
+    @ViewChild("app", {static: false}) testdiv: ElementRef;
 
     posts: Array<Post>;
     allposts: Array<Post>;
@@ -21,6 +26,7 @@ export class PrimopianoPage implements OnInit {
 
     ngOnInit() {
         this.platform.ready().then(() => {
+            console.log(this.testdiv);
             this.getDataService.getHighlites().then((data) => {
                 // @ts-ignore
                 this.posts = data.highlites.slice(0, 20);
@@ -35,6 +41,8 @@ export class PrimopianoPage implements OnInit {
 
     doRefresh(event) {
 
+        this.eventsService.publish('refresh');
+
 
         this.getDataService.getHighlitesForce().then((data) => {
             this.posts = [];
@@ -47,6 +55,8 @@ export class PrimopianoPage implements OnInit {
             // @ts-ignore
             this.allposts = data.posts;
         });
+
+
 
 
     }

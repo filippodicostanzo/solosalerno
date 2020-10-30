@@ -111,5 +111,37 @@ ion-content {
   ion-title: var(--ion-color-light);
 }
 
+.ios {
+  //background: var(--ion-color-primary);
+
+  body {
+    ion-content {
+      //--background: var(--ion-color-primary);
+    }
+
+    ion-refresher {
+      background: var(--ion-color-primary);
+      ion-refresher-content {
+        color: var(--ion-color-light);
+
+      }
+    }
+  }
+}
 
 
+.refresher-ios .refresher-pulling-icon, .refresher-ios .refresher-refreshing-icon {
+  color: var(--ion-color-light);
+}
+
+.refresher-ios .refresher-pulling-text, .refresher-ios .refresher-refreshing-text {
+  color: var(--ion-color-light);
+}
+
+* ::-webkit-scrollbar {
+  display: none;
+}
+
+.primary {
+  background: var(--ion-color-primary);
+}

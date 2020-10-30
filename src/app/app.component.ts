@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 
 import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
@@ -13,6 +13,9 @@ import {EventsService} from '../services/events/events.service';
 })
 export class AppComponent {
 
+    @ViewChild("app", {static: false}) testdiv: ElementRef;
+    dyanmicBackground: any;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -21,6 +24,7 @@ export class AppComponent {
         public eventsService: EventsService,
     ) {
         this.initializeApp();
+
     }
 
     initializeApp() {
@@ -31,6 +35,10 @@ export class AppComponent {
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
             this.oneSignalOldSDK();
+
+            setTimeout(()=> {this.dyanmicBackground = 'primary';},3000)
+
+
         });
     }
 
