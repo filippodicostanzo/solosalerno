@@ -92,6 +92,12 @@ ion-segment-button {
   --color: var(--ion-color-light);
 }
 
+.ios {
+  ion-segment-button{
+    --color-checked: var(--ion-color-primary);
+  }
+}
+
 .md {
   ion-segment-button{
     --color-checked: var(--ion-color-secondary);
